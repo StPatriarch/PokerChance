@@ -9,7 +9,7 @@ Im try to make easy your preliminary decision for continue to play or not, based
 
 Program is so simple for using. 
 
-you can call me st.patriarch and this is my first experience in programming. Don't judge me harshly...
+This is my first experience in programming. Don't judge me harshly...
 Thanks.
 
 ###### Programming language: Python.
