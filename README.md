@@ -31,5 +31,5 @@ Added the possibility of winning Hand cards in precents.
 >Features
 
 * Starting hands analyse
-* Winning possibility in Persents(%)
+* Winning possibility in Percents(%)
 ---
