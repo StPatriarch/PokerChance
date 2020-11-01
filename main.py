@@ -2,7 +2,7 @@ from time import sleep
 import lang_arm as am
 import lang_eng as en
 import lang_rus as ru
-ver = 'Version 0.0.1'
+
 print('Հայերենի համար մուտքագրեք։ H | For English input: E | Для Русского языка введите: R\n')
 sleep(0.5)
 print('')

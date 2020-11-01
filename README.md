@@ -12,24 +12,7 @@ Program is so simple for using.
 This is my first experience in programming. Don't judge me harshly...
 Thanks.
 
-
-### PokerChance version history
-
-_version 0.0.1_
-###### 23.10.2020
-
->Features
-
-* Starting hands analyse
-
+###### Programming language: Python.
 ---
-_vesion 0.0.2_
-###### 30.10.2020
+PokerChance version 0.0.1
 
-Added the possibility of winning Hand cards in precents.
-
->Features
-
-* Starting hands analyse
-* Winning possibility in Percents(%)
----

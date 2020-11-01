@@ -1,12 +1,13 @@
-import Information
+import version_info
+import json
 
 
 def greeting():
     print('''
 Ողջույն, սա պարզ պոկերային նախնական ձեռքի հնարավորության հաշվիչ է։ version {}. 
-Դուք ընդհամենը պետք է մուտքագրեք ձեր խաղային դիրքը և նախնական խաղաքարտերը։
+Դուք ընդհամենը պետք է մուտքագրեք ձեր խաղային դիրքը, նախնական խաղաքարտերը և խաղացողների քանակը։
 Ծրագիրը հաշվի չի առնում խաղաքարտերի մաստային պատկանելությունը։ \U00002660  \U00002665  \U00002666  \U00002663
-'''.format(Information.version))
+'''.format(version_info.version))
 
 
 def position():
@@ -21,17 +22,11 @@ def position():
  | LP -> Last Position   |
  .-.-.-.-.-.-.-.-.-.-.-.-. \n''')
 
-    pos = str.upper(input('Խնդրում եմ մուտքագրեք ձեր դիրքը \t'))
+    pos = input('Խնդրում եմ մուտքագրեք ձեր դիրքը \t').upper()
 
-    if pos == 'D':
+    if pos == 'D' or pos == 'SB' or pos == 'BB':
         small_big_dealer()
-    elif pos == 'SB':
-        small_big_dealer()
-    elif pos == 'BB':
-        small_big_dealer()
-    elif pos == 'EP':
-        early_middle()
-    elif pos == 'MP':
+    elif pos == 'EP'or pos == 'MP':
         early_middle()
     elif pos == 'LP':
         last_position()
@@ -39,101 +34,119 @@ def position():
         print('Մուտքագրված դիրքը սխալ է։ Խնդրում եմ կրկին փորձեք։')
 
 
+def percents(card, player):
+    with open('chance_in_percents.json') as json_file:
+        file = json.load(json_file)
+        return file[card][player]
+
+
 def small_big_dealer():
-    first_card = input('Խնդրում եմ մուտքագրեք ձեր խաղաքարտերը\t')
+    cards = input('Խնդրում եմ մուտքագրեք ձեր խաղաքարտերը\t').upper()
+    print('\n1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9')
+    players = input('\nԽնդրում եմ մուտքագրեք խաղացողների քանակը\t')
 
-    cards = str.upper(first_card)
-
-    card_combinations = {
-
-        'AA': 'Recommended', 'AK': 'Recommended', 'KQ': 'Recommended', 'QJ': 'Recommended', 'J9': 'Recommended',
-        'KK': 'Recommended', 'AQ': 'Recommended', 'KJ': 'Recommended', 'QT': 'Recommended', 'T9': 'Recommended',
-        'QQ': 'Recommended', 'AJ': 'Recommended', 'KT': 'Recommended', 'JT': 'Recommended',
-        'JJ': 'Recommended', 'AT': 'Recommended',
-        'TT': 'Recommended',
-        '99': 'Recommended',
-        '88': 'Recommended',
-        '77': 'Recommended',
-
-    }
+    card_combinations = dict.fromkeys([
+        'AA', 'AK', 'KQ', 'QJ', 'J9',
+        'KK', 'AQ', 'KJ', 'QT', 'T9',
+        'QQ', 'AJ', 'KT', 'JT',
+        'JJ', 'AT',
+        'TT',
+        '99',
+        '88',
+        '77'], '\nԹույլատրված է ձեր դիրքի համար։')
 
     try:
         finder = card_combinations[cards]
-        print(finder)
+        print(finder,)
+        try:
+            print('Ձեր խաղաքարտերի հաղթելու հավանականությունը՝ {}% է։'.format(percents(cards, players)))
+        except KeyError:
+            print('Բայց հաղթեանակի Տոկոսը շատ ցածր է։')
     except KeyError:
         try:
             rev = cards[::-1]
             finder_2 = card_combinations[rev]
-            print(finder_2)
+            print(finder_2,)
+            try:
+                print('Ձեր խաղաքարտերի հաղթելու հավանականությունը՝ {}% է։'.format(percents(rev, players)))
+            except KeyError:
+                print('Բայց հաղթեանակի Տոկոսը շատ ցածր է։')
         except KeyError:
             print('Խաղաքարտը չի գտնվել։ Տվյալ կոմբինացիան խորհուրդ չի տրվում ձեր դիրքի համար։')
 
 
 def early_middle():
-    first_card = input('Խնդրում եմ մուտքագրեք ձեր խաղաքարտերը\t')
+    cards = input('Խնդրում եմ մուտքագրեք ձեր խաղաքարտերը\t').upper()
+    print('\n1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9')
+    players = input('\nԽնդրում եմ մուտքագրեք խաղացողների քանակը\t').capitalize()
 
-    cards = str.upper(first_card)
-
-    card_combinations = {
-
-        'AA': 'Recommended', 'AK': 'Recommended', 'KQ': 'Recommended', 'JT': 'Recommended',
-        'KK': 'Recommended', 'AQ': 'Recommended', 'KJ': 'Recommended', 'J9': 'Recommended',
-        'QQ': 'Recommended', 'AJ': 'Recommended', 'KT': 'Recommended', 'J8': 'Recommended',
-        'JJ': 'Recommended', 'AT': 'Recommended', 'K9': 'Recommended', 'T9': 'Recommended',
-        'TT': 'Recommended', 'A9': 'Recommended', 'QJ': 'Recommended', 'T8': 'Recommended',
-        '99': 'Recommended', 'A8': 'Recommended', 'QT': 'Recommended', '98': 'Recommended',
-        '88': 'Recommended', 'A7': 'Recommended', 'Q9': 'Recommended',
-        '77': 'Recommended', 'A6': 'Recommended', 'Q8': 'Recommended',
-        '66': 'Recommended',
-        '55': 'Recommended',
-
-
-    }
+    card_combinations = dict.fromkeys([
+        'AA', 'AK', 'KQ', 'JT',
+        'KK', 'AQ', 'KJ', 'J9',
+        'QQ', 'AJ', 'KT', 'J8',
+        'JJ', 'AT', 'K9', 'T9',
+        'TT', 'A9', 'QJ', 'T8',
+        '99', 'A8', 'QT', '98',
+        '88', 'A7', 'Q9',
+        '77', 'A6', 'Q8',
+        '66',
+        '55', ], '\nԹույլատրված է ձեր դիրքի համար։')
 
     try:
         finder = card_combinations[cards]
-        print(finder)
+        print(finder,)
+        try:
+            print('Ձեր խաղաքարտերի հաղթելու հավանականությունը՝ {}% է։'.format(percents(cards, players)))
+        except KeyError:
+            print('Բայց հաղթեանակի Տոկոսը շատ ցածր է։')
     except KeyError:
         try:
             rev = cards[::-1]
             finder_2 = card_combinations[rev]
-            print(finder_2)
+            print(finder_2,)
+            try:
+                print('Ձեր խաղաքարտերի հաղթելու հավանականությունը՝ {}% է։'.format(percents(rev, players)))
+            except KeyError:
+                print('Բայց հաղթեանակի Տոկոսը շատ ցածր է։')
         except KeyError:
             print('Խաղաքարտը չի գտնվել։ Տվյալ կոմբինացիան խորհուրդ չի տրվում ձեր դիրքի համար։')
 
 
 def last_position():
-    first_card = input('Խնդրում եմ մուտքագրեք ձեր խաղաքարտերը\t')
+    cards = input('Խնդրում եմ մուտքագրեք ձեր խաղաքարտերը\t').upper()
+    print('\n1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9')
+    players = input('\nԽնդրում եմ մուտքագրեք խաղացողների քանակը\t').capitalize()
 
-    cards = str.upper(first_card)
-
-    card_combinations = {
-
-        'AA': 'Recommended', 'AK': 'Recommended', 'KQ': 'Recommended', 'QJ': 'Recommended', 'T7': 'Recommended',
-        'KK': 'Recommended', 'AQ': 'Recommended', 'KJ': 'Recommended', 'QT': 'Recommended', '98': 'Recommended',
-        'QQ': 'Recommended', 'AJ': 'Recommended', 'KT': 'Recommended', 'Q9': 'Recommended', '97': 'Recommended',
-        'JJ': 'Recommended', 'AT': 'Recommended', 'K9': 'Recommended', 'Q8': 'Recommended', '96': 'Recommended',
-        'TT': 'Recommended', 'A9': 'Recommended', 'K8': 'Recommended', 'JT': 'Recommended', '87': 'Recommended',
-        '99': 'Recommended', 'A8': 'Recommended', 'K7': 'Recommended', 'J9': 'Recommended', '86': 'Recommended',
-        '88': 'Recommended', 'A7': 'Recommended', 'K6': 'Recommended', 'J8': 'Recommended', '76': 'Recommended',
-        '77': 'Recommended', 'A6': 'Recommended', 'K5': 'Recommended', 'J7': 'Recommended', '75': 'Recommended',
-        '66': 'Recommended', 'A5': 'Recommended', 'K4': 'Recommended', 'T9': 'Recommended', '65': 'Recommended',
-        '55': 'Recommended', 'A4': 'Recommended', 'K3': 'Recommended', 'T8': 'Recommended',
-        '44': 'Recommended', 'A3': 'Recommended', 'K2': 'Recommended',
-        '33': 'Recommended', 'A2': 'Recommended',
-        '22': 'Recommended',
-
-
-
-    }
+    card_combinations = dict.fromkeys([
+        'AA', 'AK', 'KQ', 'QJ', 'T7',
+        'KK', 'AQ', 'KJ', 'QT', '98',
+        'QQ', 'AJ', 'KT', 'Q9', '97',
+        'JJ', 'AT', 'K9', 'Q8', '96',
+        'TT', 'A9', 'K8', 'JT', '87',
+        '99', 'A8', 'K7', 'J9', '86',
+        '88', 'A7', 'K6', 'J8', '76',
+        '77', 'A6', 'K5', 'J7', '75',
+        '66', 'A5', 'K4', 'T9', '65',
+        '55', 'A4', 'K3', 'T8',
+        '44', 'A3', 'K2',
+        '33', 'A2',
+        '22', ], '\nԹույլատրված է ձեր դիրքի համար։')
 
     try:
         finder = card_combinations[cards]
-        print(finder)
+        print(finder,)
+        try:
+            print('Ձեր խաղաքարտերի հաղթելու հավանականությունը՝ {}% է։'.format(percents(cards, players)))
+        except KeyError:
+            print('Բայց հաղթեանակի Տոկոսը շատ ցածր է։')
     except KeyError:
         try:
             rev = cards[::-1]
             finder_2 = card_combinations[rev]
-            print(finder_2)
+            print(finder_2,)
+            try:
+                print('Ձեր խաղաքարտերի հաղթելու հավանականությունը՝ {}% է։'.format(percents(rev, players)))
+            except KeyError:
+                print('Բայց հաղթեանակի Տոկոսը շատ ցածր է։')
         except KeyError:
-            print('Խաղաքարտը չի գտնվել։ Տվյալ կոմբինացիան խորհուրդ չի տրվում։')
+            print('Խաղաքարտը չի գտնվել։ Տվյալ կոմբինացիան խորհուրդ չի տրվում ձեր դիրքի համար։')
