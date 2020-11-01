@@ -19,7 +19,7 @@ _version 0.0.1_
 ###### 23.10.2020
 
 >Features
-* tarting hands analyse.
+* Starting hands analyse.
 ---
 
 _version_ 0.0.2
