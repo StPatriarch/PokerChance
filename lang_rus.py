@@ -6,7 +6,7 @@ def greeting():
     print('''
 Приветствую, это простой калькулятор для начальних рук в покере version {}. 
 Вы просто должны ввести вашу позоцию, начальные руки и число играков.
-Программа не принимает во внимание масти карт. \U00002660  \U00002665  \U00002666  \U00002663
+Программа не принимает во внимание масти карт.  \U00002660  \U00002665  \U00002666  \U00002663
 '''.format(version_info.version))
 
 
@@ -24,14 +24,17 @@ def position():
 
     pos = input('Пожалуйста введите вашу позицию \t').upper()
 
-    if pos == 'D' or pos == 'SB' or pos == 'BB':
-        small_big_dealer()
-    elif pos == 'EP'or pos == 'MP':
-        early_middle()
-    elif pos == 'LP':
-        last_position()
-    else:
-        print('Выбранная позиция не является валидным. Пожалуйста пробуйте снова')
+    while True:
+
+        if pos == 'D' or pos == 'SB' or pos == 'BB':
+            small_big_dealer()
+        elif pos == 'EP'or pos == 'MP':
+            early_middle()
+        elif pos == 'LP':
+            last_position()
+        else:
+            print('Выбранная позиция не является валидным. Пожалуйста пробуйте снова')
+            break
 
 
 def percents(card, player):
@@ -95,7 +98,7 @@ def early_middle():
         finder = card_combinations[cards]
         print(finder)
         try:
-            print('Бозможность выигрыша ваших карт составляет {}%'.format(percents(cards, players)))
+            print('Возможность выигрыша ваших карт составляет {}%'.format(percents(cards, players)))
         except KeyError:
             print('Но процент выигрыша очень низок.')
     except KeyError:
@@ -135,7 +138,7 @@ def last_position():
         finder = card_combinations[cards]
         print(finder)
         try:
-            print('Бозможность выигрыша ваших карт составляет {}%'.format(percents(cards, players)))
+            print('Возможность выигрыша ваших карт составляет {}%'.format(percents(cards, players)))
         except KeyError:
             print('Но процент выигрыша очень низок.')
     except KeyError:

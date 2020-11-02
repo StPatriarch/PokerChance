@@ -6,7 +6,7 @@ def greeting():
     print('''
 Ողջույն, սա պարզ պոկերային նախնական ձեռքի հնարավորության հաշվիչ է։ version {}. 
 Դուք ընդհամենը պետք է մուտքագրեք ձեր խաղային դիրքը, նախնական խաղաքարտերը և խաղացողների քանակը։
-Ծրագիրը հաշվի չի առնում խաղաքարտերի մաստային պատկանելությունը։ \U00002660  \U00002665  \U00002666  \U00002663
+Ծրագիրը հաշվի չի առնում խաղաքարտերի մաստային պատկանելությունը։  \U00002660  \U00002665  \U00002666  \U00002663
 '''.format(version_info.version))
 
 
@@ -24,14 +24,17 @@ def position():
 
     pos = input('Խնդրում եմ մուտքագրեք ձեր դիրքը \t').upper()
 
-    if pos == 'D' or pos == 'SB' or pos == 'BB':
-        small_big_dealer()
-    elif pos == 'EP'or pos == 'MP':
-        early_middle()
-    elif pos == 'LP':
-        last_position()
-    else:
-        print('Մուտքագրված դիրքը սխալ է։ Խնդրում եմ կրկին փորձեք։')
+    while True:
+
+        if pos == 'D' or pos == 'SB' or pos == 'BB':
+            small_big_dealer()
+        elif pos == 'EP'or pos == 'MP':
+            early_middle()
+        elif pos == 'LP':
+            last_position()
+        else:
+            print('Մուտքագրված դիրքը սխալ է։ Խնդրում եմ կրկին փորձեք։')
+            break
 
 
 def percents(card, player):

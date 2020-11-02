@@ -4,9 +4,9 @@ import json
 
 def greetings():
     print('''
-    Hello, this is simple poker Starting hands chance calculator | version {}. 
-    You should just enter your position, your starting hands and number of players.
-    Program is't take into consideration card suits. \U00002660  \U00002665  \U00002666  \U00002663
+Hello, this is simple poker Starting hands chance calculator | version {}. 
+You should just enter your position, your starting hands and number of players.
+Program is't take into consideration card suits.  \U00002660  \U00002665  \U00002666  \U00002663
     '''.format(version_info.version))
 
 
@@ -24,14 +24,17 @@ def position():
 
     pos = input('Please enter your Position \t').upper()
 
-    if pos == 'D' or pos == 'SB' or pos == 'BB':
-        small_big_dealer()
-    elif pos == 'EP'or pos == 'MP':
-        early_middle()
-    elif pos == 'LP':
-        last_position()
-    else:
-        print('Chosen position is not valid. Please try again.')
+    while True:
+
+        if pos == 'D' or pos == 'SB' or pos == 'BB':
+            small_big_dealer()
+        elif pos == 'EP'or pos == 'MP':
+            early_middle()
+        elif pos == 'LP':
+            last_position()
+        else:
+            print('Chosen position is not valid. Please try again.')
+            break
 
 
 def percents(card, player):
