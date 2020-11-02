@@ -6,7 +6,7 @@ def greetings():
     print('''
 Hello, this is simple poker Starting hands chance calculator | version {}. 
 You should just enter your position, your starting hands and number of players.
-Program is't take into consideration card suits.  \U00002660  \U00002665  \U00002666  \U00002663
+Program is't take into consideration card suits. \U00002660  \U00002665  \U00002666  \U00002663
     '''.format(version_info.version))
 
 
