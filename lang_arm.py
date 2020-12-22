@@ -24,17 +24,14 @@ def position():
 
     pos = input('Խնդրում եմ մուտքագրեք ձեր դիրքը \t').upper()
 
-    while True:
-
-        if pos == 'D' or pos == 'SB' or pos == 'BB':
-            small_big_dealer()
-        elif pos == 'EP'or pos == 'MP':
-            early_middle()
-        elif pos == 'LP':
-            last_position()
-        else:
-            print('Մուտքագրված դիրքը սխալ է։ Խնդրում եմ կրկին փորձեք։')
-            break
+    if pos == 'D' or pos == 'SB' or pos == 'BB':
+        small_big_dealer()
+    elif pos == 'EP'or pos == 'MP':
+        early_middle()
+    elif pos == 'LP':
+        last_position()
+    else:
+        print('Մուտքագրված դիրքը սխալ է։ Խնդրում եմ կրկին փորձեք։')
 
 
 def percents(card, player):

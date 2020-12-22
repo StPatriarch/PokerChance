@@ -24,17 +24,14 @@ def position():
 
     pos = input('Пожалуйста введите вашу позицию \t').upper()
 
-    while True:
-
-        if pos == 'D' or pos == 'SB' or pos == 'BB':
-            small_big_dealer()
-        elif pos == 'EP'or pos == 'MP':
-            early_middle()
-        elif pos == 'LP':
-            last_position()
-        else:
-            print('Выбранная позиция не является валидным. Пожалуйста пробуйте снова')
-            break
+    if pos == 'D' or pos == 'SB' or pos == 'BB':
+        small_big_dealer()
+    elif pos == 'EP'or pos == 'MP':
+        early_middle()
+    elif pos == 'LP':
+        last_position()
+    else:
+        print('Выбранная позиция не является валидным. Пожалуйста пробуйте снова')
 
 
 def percents(card, player):
