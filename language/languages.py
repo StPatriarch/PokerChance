@@ -1,6 +1,5 @@
 from language.language_interface import LocalInterface
-from joint.instruments import UserInputs as Ui
-
+from joint.toolbox import Tools
 valid_positions = ['D', 'E', 'L']
 valid_players = [f'{i}' for i in range(1, 10)]
 
@@ -16,10 +15,13 @@ class ArmenianLanguage(LocalInterface):
 	@staticmethod
 	def positions_data():
 		return {
-			'Position': Ui.user_inputs('Մուտքագրեք ձեր դիրքը: ', valid_positions),
-			'Players': Ui.user_inputs('Մուտքագրեք մրցակիցների քանակը: ', valid_players),
-			'Cards': Ui.user_inputs('Մուտքագրեք ձեր խաղաքարտերը: ')
+			'Position': Tools().user_inputs('Մուտքագրեք ձեր դիրքը: ', valid_positions),
+			'Players': Tools().user_inputs('Մուտքագրեք մրցակիցների քանակը: ', valid_players),
 		}
+
+	@staticmethod
+	def card_data():
+		return Tools().user_inputs('Մուտքագրեք ձեր խաղաքարտերը: ')
 
 	@staticmethod
 	def other_data(data, percent=None):
@@ -41,10 +43,13 @@ class RussianLanguage(LocalInterface):
 	@staticmethod
 	def positions_data():
 		return {
-			'Position': Ui.user_inputs('Введите вашу позицию: ', valid_positions),
-			'Players': Ui.user_inputs('Введите число оппонентов: ', valid_players),
-			'Cards': Ui.user_inputs('Введите ваши карты: ')
+			'Position': Tools().user_inputs('Введите вашу позицию: ', valid_positions),
+			'Players': Tools().user_inputs('Введите число оппонентов: ', valid_players),
 		}
+
+	@staticmethod
+	def card_data():
+		return Tools().user_inputs('Введите ваши карты: ')
 
 	@staticmethod
 	def other_data(data, percent=None):
@@ -66,15 +71,18 @@ Program it's take into consideration card suits. \U00002660  \U00002665  \U00002
 	@staticmethod
 	def positions_data():
 		return {
-			'Position': Ui.user_inputs('Enter your Position: ', valid_positions),
-			'Players': Ui.user_inputs('Enter number of Players: ', valid_players),
-			'Cards': Ui.user_inputs('Enter your cards: ')
+			'Position': Tools().user_inputs('Enter your Position: ', valid_positions),
+			'Players': Tools().user_inputs('Enter number of Players: ', valid_players),
 		}
+
+	@staticmethod
+	def card_data():
+		return Tools().user_inputs('Enter your cards: ')
 
 	@staticmethod
 	def other_data(data, percent=None):
 		answers = {
 			'answer_one': f'The possibility of winning your cards is {percent}%',
-			'answer_two': 'Карты не найдены. Не рекомендованная комбинация карт для вашего позиции.'
+			'answer_two': 'Cards not found. Not recommended combination of cards for your position.'
 		}
 		return answers.get(data)

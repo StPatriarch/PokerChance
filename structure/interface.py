@@ -1,6 +1,6 @@
-from structure.commands import PercentsSelectCommand
+from structure.commands import PercentsSelectCommand as PerComm
 from language.languages import ArmenianLanguage, RussianLanguage, EnglishLanguage
-from joint.instruments import IsValid, PositionsList
+from joint.toolbox import Tools, PercentChance
 
 
 class Interface:
@@ -10,24 +10,47 @@ class Interface:
 
 	def choose(self):
 		print(self.language.greeting)
-		PositionsList().print_positions_list()
-		data = self.language.positions_data()
-		percent_value = self.percent_validation(data)
-		extras = self.user_input_results(percent_value)
-		return self.language(data).positions_choose(extras)
+		Tools.print_positions_list()
+		self.data_serialize()
+		return self.data_deserialize()
 
-	@staticmethod
-	def percent_validation(data):
+	def data_serialize(self):
+		data = self.language.positions_data()
+		Tools.serialize(data=data)
+
+	def data_deserialize(self):
+		dump = Tools.deserialize()
+		while True:
+			data = {
+				'Position': dump['Position'],
+				'Players': dump['Players'],
+				'Cards': self.language.card_data()
+			}
+			extras = self.processing_additional_data(data=data)
+			return self.language(data).positions_choose(extras)
+
+	def percent_validation(self, data):
 		try:
-			percent = ''.join([str(value) for value in PercentsSelectCommand().execute(data)])
+			dat = Tools.value_len_correction(data=data.copy())
+			if not dat:
+				self.data_deserialize()
+			percents = PercentChance(data=dat).extract()
+			if isinstance(percents, list):
+				chances = ' - '.join(i for i in percents)
+				return chances
+			return percents
 		except TypeError:
 			return None
-		return percent
 
-	def user_input_results(self, percent_value):
+	def processing_additional_data(self, data):
+		chance_value = self.percent_validation(data)
+		extras = self.user_input_results(chance_value)
+		return extras
+
+	def user_input_results(self, chance_value):
 		return {
-			'answer_one': self.additional('answer_one', percent_value),
-			'answer_two': self.additional('answer_two')
+			'answer_one': self.language.other_data('answer_one', chance_value),
+			'answer_two': self.language.other_data('answer_two')
 		}
 
 	def additional(self, data, percent=None):
@@ -46,7 +69,7 @@ languages_list = {
 
 def user_choice(option):
 	choice = input('մուտքագրեք։  |  input:  |  введите: \n ')
-	while not IsValid.is_valid(choice, option):
+	while not Tools.is_valid(choice, option):
 		choice = input('incorrect')
 	return option[choice.upper()]
 
@@ -55,11 +78,3 @@ def print_languages(languages):
 	for key, value in languages.items():
 		print(f'{key} - {value}')
 	print()
-
-
-if __name__ == '__main__':
-	print_languages(languages_list)
-	chosen = user_choice(languages_list)
-	chosen.choose()
-
-

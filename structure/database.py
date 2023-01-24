@@ -13,11 +13,11 @@ class DataBaseManager:
 			curr.execute(content, values or [])
 		return curr
 
-	def data_select(self, table_name, criteria_1, criteria_2=None):
-		query = f'''SELECT card_name FROM {table_name} WHERE card_name='{criteria_1}'  '''
-		if criteria_2:
+	def data_select(self, table_name, card_name, player_name=None):
+		query = f'''SELECT card_name FROM {table_name} WHERE card_name='{card_name}'  '''
+		if player_name:
 			query = f'''
-			SELECT {criteria_2} FROM {table_name} WHERE card_type='{criteria_1}' '''
+			SELECT {player_name} FROM {table_name} WHERE card_type='{card_name}' '''
 
 		query_fetch = self.connection(query).fetchone()
 		return query_fetch

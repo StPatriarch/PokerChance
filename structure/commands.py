@@ -19,6 +19,3 @@ class PercentsSelectCommand(Command):
 class CardsSelectCommand(Command):
 	def execute(self, data):
 		return DB.data_select(data['Position'], data['Cards'])
-
-
-
