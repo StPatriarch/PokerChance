@@ -13,11 +13,11 @@ class DataBaseManager:
 			curr.execute(content, values or [])
 		return curr
 
-	def data_select(self, table_name, card_name, player_name=None):
+	def data_select(self, table_name, card_name, player_count=None):
 		query = f'''SELECT card_name FROM {table_name} WHERE card_name='{card_name}'  '''
-		if player_name:
+		if player_count:
 			query = f'''
-			SELECT {player_name} FROM {table_name} WHERE card_type='{card_name}' '''
+			SELECT {player_count} FROM {table_name} WHERE card_type='{card_name}' '''
 
 		query_fetch = self.connection(query).fetchone()
 		return query_fetch

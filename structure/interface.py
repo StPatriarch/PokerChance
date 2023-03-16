@@ -1,4 +1,3 @@
-from structure.commands import PercentsSelectCommand as PerComm
 from language.languages import ArmenianLanguage, RussianLanguage, EnglishLanguage
 from joint.toolbox import Tools, PercentChance
 
@@ -16,28 +15,31 @@ class Interface:
 
 	def data_serialize(self):
 		data = self.language.positions_data()
-		Tools.serialize(data=data)
+		Tools(data).serialize()
 
 	def data_deserialize(self):
-		dump = Tools.deserialize()
+		tool = Tools(Tools.deserialize())
+		p_list = tool.correct_position_by_players()
+		p_cycle = tool.queue_cycle(p_list)
 		while True:
 			data = {
-				'Position': dump['Position'],
-				'Players': dump['Players'],
+				'Position': tool.data['Position'],
+				'Players': tool.data['Players'],
 				'Cards': self.language.card_data()
-			}
+				}
+			Tools({
+				'Position': Tools.position_(p_cycle),
+				'Players': tool.data['Players'],
+			}).serialize()
 			extras = self.processing_additional_data(data=data)
 			return self.language(data).positions_choose(extras)
 
-	def percent_validation(self, data):
+	@staticmethod
+	def percent_validation(data):
 		try:
-			dat = Tools.value_len_correction(data=data.copy())
-			if not dat:
-				self.data_deserialize()
-			percents = PercentChance(data=dat).extract()
+			percents = PercentChance(data=data.copy()).extract()
 			if isinstance(percents, list):
-				chances = ' - '.join(i for i in percents)
-				return chances
+				percents = ' - '.join(i for i in percents)
 			return percents
 		except TypeError:
 			return None

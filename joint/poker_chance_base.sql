@@ -21,7 +21,7 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
--- Name: d; Type: TABLE; Schema: public; Owner: stpatriarch
+-- Name: d; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.d (
@@ -30,10 +30,28 @@ CREATE TABLE public.d (
 );
 
 
-ALTER TABLE public.d OWNER TO stpatriarch;
+--
+-- Name: d_0; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.d_0 (
+    card_id integer,
+    card_name text
+);
+
 
 --
--- Name: d_card_id_seq; Type: SEQUENCE; Schema: public; Owner: stpatriarch
+-- Name: d_1; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.d_1 (
+    card_id integer,
+    card_name text
+);
+
+
+--
+-- Name: d_card_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE public.d_card_id_seq
@@ -45,17 +63,15 @@ CREATE SEQUENCE public.d_card_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.d_card_id_seq OWNER TO stpatriarch;
-
 --
--- Name: d_card_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: stpatriarch
+-- Name: d_card_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE public.d_card_id_seq OWNED BY public.d.card_id;
 
 
 --
--- Name: e; Type: TABLE; Schema: public; Owner: stpatriarch
+-- Name: e; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.e (
@@ -64,10 +80,28 @@ CREATE TABLE public.e (
 );
 
 
-ALTER TABLE public.e OWNER TO stpatriarch;
+--
+-- Name: e_0; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.e_0 (
+    card_id integer,
+    card_name text
+);
+
 
 --
--- Name: e_card_id_seq; Type: SEQUENCE; Schema: public; Owner: stpatriarch
+-- Name: e_1; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.e_1 (
+    card_id integer,
+    card_name text
+);
+
+
+--
+-- Name: e_card_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE public.e_card_id_seq
@@ -79,17 +113,15 @@ CREATE SEQUENCE public.e_card_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.e_card_id_seq OWNER TO stpatriarch;
-
 --
--- Name: e_card_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: stpatriarch
+-- Name: e_card_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE public.e_card_id_seq OWNED BY public.e.card_id;
 
 
 --
--- Name: l; Type: TABLE; Schema: public; Owner: stpatriarch
+-- Name: l; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.l (
@@ -98,10 +130,28 @@ CREATE TABLE public.l (
 );
 
 
-ALTER TABLE public.l OWNER TO stpatriarch;
+--
+-- Name: l_0; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.l_0 (
+    card_id integer,
+    card_name text
+);
+
 
 --
--- Name: l_card_id_seq; Type: SEQUENCE; Schema: public; Owner: stpatriarch
+-- Name: l_1; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.l_1 (
+    card_id integer,
+    card_name text
+);
+
+
+--
+-- Name: l_card_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE public.l_card_id_seq
@@ -113,17 +163,15 @@ CREATE SEQUENCE public.l_card_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.l_card_id_seq OWNER TO stpatriarch;
-
 --
--- Name: l_card_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: stpatriarch
+-- Name: l_card_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE public.l_card_id_seq OWNED BY public.l.card_id;
 
 
 --
--- Name: last_position; Type: TABLE; Schema: public; Owner: stpatriarch
+-- Name: last_position; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.last_position (
@@ -132,10 +180,8 @@ CREATE TABLE public.last_position (
 );
 
 
-ALTER TABLE public.last_position OWNER TO stpatriarch;
-
 --
--- Name: last_position_card_id_seq; Type: SEQUENCE; Schema: public; Owner: stpatriarch
+-- Name: last_position_card_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE public.last_position_card_id_seq
@@ -147,17 +193,15 @@ CREATE SEQUENCE public.last_position_card_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.last_position_card_id_seq OWNER TO stpatriarch;
-
 --
--- Name: last_position_card_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: stpatriarch
+-- Name: last_position_card_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE public.last_position_card_id_seq OWNED BY public.last_position.card_id;
 
 
 --
--- Name: players; Type: TABLE; Schema: public; Owner: stpatriarch
+-- Name: players; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.players (
@@ -175,10 +219,8 @@ CREATE TABLE public.players (
 );
 
 
-ALTER TABLE public.players OWNER TO stpatriarch;
-
 --
--- Name: players_player_id_seq; Type: SEQUENCE; Schema: public; Owner: stpatriarch
+-- Name: players_player_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE public.players_player_id_seq
@@ -190,52 +232,50 @@ CREATE SEQUENCE public.players_player_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.players_player_id_seq OWNER TO stpatriarch;
-
 --
--- Name: players_player_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: stpatriarch
+-- Name: players_player_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE public.players_player_id_seq OWNED BY public.players.player_id;
 
 
 --
--- Name: d card_id; Type: DEFAULT; Schema: public; Owner: stpatriarch
+-- Name: d card_id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.d ALTER COLUMN card_id SET DEFAULT nextval('public.d_card_id_seq'::regclass);
 
 
 --
--- Name: e card_id; Type: DEFAULT; Schema: public; Owner: stpatriarch
+-- Name: e card_id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.e ALTER COLUMN card_id SET DEFAULT nextval('public.e_card_id_seq'::regclass);
 
 
 --
--- Name: l card_id; Type: DEFAULT; Schema: public; Owner: stpatriarch
+-- Name: l card_id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.l ALTER COLUMN card_id SET DEFAULT nextval('public.l_card_id_seq'::regclass);
 
 
 --
--- Name: last_position card_id; Type: DEFAULT; Schema: public; Owner: stpatriarch
+-- Name: last_position card_id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.last_position ALTER COLUMN card_id SET DEFAULT nextval('public.last_position_card_id_seq'::regclass);
 
 
 --
--- Name: players player_id; Type: DEFAULT; Schema: public; Owner: stpatriarch
+-- Name: players player_id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.players ALTER COLUMN player_id SET DEFAULT nextval('public.players_player_id_seq'::regclass);
 
 
 --
--- Data for Name: d; Type: TABLE DATA; Schema: public; Owner: stpatriarch
+-- Data for Name: d; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.d (card_id, card_name) FROM stdin;
@@ -263,7 +303,63 @@ COPY public.d (card_id, card_name) FROM stdin;
 
 
 --
--- Data for Name: e; Type: TABLE DATA; Schema: public; Owner: stpatriarch
+-- Data for Name: d_0; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY public.d_0 (card_id, card_name) FROM stdin;
+1	AA
+2	AK
+3	KQ
+4	QJ
+5	J9
+6	KK
+7	AQ
+8	KJ
+9	QT
+10	T9
+11	QQ
+12	AJ
+13	KT
+14	JT
+15	JJ
+16	AT
+17	TT
+18	99
+19	88
+20	77
+\.
+
+
+--
+-- Data for Name: d_1; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY public.d_1 (card_id, card_name) FROM stdin;
+1	AA
+2	AK
+3	KQ
+4	QJ
+5	J9
+6	KK
+7	AQ
+8	KJ
+9	QT
+10	T9
+11	QQ
+12	AJ
+13	KT
+14	JT
+15	JJ
+16	AT
+17	TT
+18	99
+19	88
+20	77
+\.
+
+
+--
+-- Data for Name: e; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.e (card_id, card_name) FROM stdin;
@@ -303,7 +399,87 @@ COPY public.e (card_id, card_name) FROM stdin;
 
 
 --
--- Data for Name: l; Type: TABLE DATA; Schema: public; Owner: stpatriarch
+-- Data for Name: e_0; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY public.e_0 (card_id, card_name) FROM stdin;
+1	AA
+2	AK
+3	KQ
+4	JT
+5	KK
+6	AQ
+7	KJ
+8	J9
+9	QQ
+10	AJ
+11	KT
+12	J8
+13	JJ
+14	AT
+15	K9
+16	T9
+17	TT
+18	A9
+19	QJ
+20	T8
+21	99
+22	A8
+23	QT
+24	98
+25	88
+26	A7
+27	Q9
+28	77
+29	A6
+30	Q8
+31	66
+32	55
+\.
+
+
+--
+-- Data for Name: e_1; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY public.e_1 (card_id, card_name) FROM stdin;
+1	AA
+2	AK
+3	KQ
+4	JT
+5	KK
+6	AQ
+7	KJ
+8	J9
+9	QQ
+10	AJ
+11	KT
+12	J8
+13	JJ
+14	AT
+15	K9
+16	T9
+17	TT
+18	A9
+19	QJ
+20	T8
+21	99
+22	A8
+23	QT
+24	98
+25	88
+26	A7
+27	Q9
+28	77
+29	A6
+30	Q8
+31	66
+32	55
+\.
+
+
+--
+-- Data for Name: l; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.l (card_id, card_name) FROM stdin;
@@ -366,7 +542,133 @@ COPY public.l (card_id, card_name) FROM stdin;
 
 
 --
--- Data for Name: last_position; Type: TABLE DATA; Schema: public; Owner: stpatriarch
+-- Data for Name: l_0; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY public.l_0 (card_id, card_name) FROM stdin;
+1	AA
+2	AK
+3	KQ
+4	QJ
+5	T7
+6	KK
+7	AQ
+8	KJ
+9	QT
+10	98
+11	QQ
+12	AJ
+13	KT
+14	Q9
+15	97
+16	JJ
+17	AT
+18	K9
+19	Q8
+20	96
+21	TT
+22	A9
+23	K8
+24	JT
+25	87
+26	99
+27	A8
+28	K7
+29	J9
+30	86
+31	88
+32	A7
+33	K6
+34	J8
+35	76
+36	77
+37	A6
+38	K5
+39	J7
+40	75
+41	66
+42	A5
+43	K4
+44	T9
+45	65
+46	55
+47	A4
+48	K3
+49	T8
+50	44
+51	A3
+52	K2
+53	33
+54	A2
+55	22
+\.
+
+
+--
+-- Data for Name: l_1; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY public.l_1 (card_id, card_name) FROM stdin;
+1	AA
+2	AK
+3	KQ
+4	QJ
+5	T7
+6	KK
+7	AQ
+8	KJ
+9	QT
+10	98
+11	QQ
+12	AJ
+13	KT
+14	Q9
+15	97
+16	JJ
+17	AT
+18	K9
+19	Q8
+20	96
+21	TT
+22	A9
+23	K8
+24	JT
+25	87
+26	99
+27	A8
+28	K7
+29	J9
+30	86
+31	88
+32	A7
+33	K6
+34	J8
+35	76
+36	77
+37	A6
+38	K5
+39	J7
+40	75
+41	66
+42	A5
+43	K4
+44	T9
+45	65
+46	55
+47	A4
+48	K3
+49	T8
+50	44
+51	A3
+52	K2
+53	33
+54	A2
+55	22
+\.
+
+
+--
+-- Data for Name: last_position; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.last_position (card_id, card_name) FROM stdin;
@@ -429,7 +731,7 @@ COPY public.last_position (card_id, card_name) FROM stdin;
 
 
 --
--- Data for Name: players; Type: TABLE DATA; Schema: public; Owner: stpatriarch
+-- Data for Name: players; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.players (player_id, card_type, p_1, p_2, p_3, p_4, p_5, p_6, p_7, p_8, p_9) FROM stdin;
@@ -490,42 +792,42 @@ COPY public.players (player_id, card_type, p_1, p_2, p_3, p_4, p_5, p_6, p_7, p_
 
 
 --
--- Name: d_card_id_seq; Type: SEQUENCE SET; Schema: public; Owner: stpatriarch
+-- Name: d_card_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public.d_card_id_seq', 20, true);
 
 
 --
--- Name: e_card_id_seq; Type: SEQUENCE SET; Schema: public; Owner: stpatriarch
+-- Name: e_card_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public.e_card_id_seq', 32, true);
 
 
 --
--- Name: l_card_id_seq; Type: SEQUENCE SET; Schema: public; Owner: stpatriarch
+-- Name: l_card_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public.l_card_id_seq', 55, true);
 
 
 --
--- Name: last_position_card_id_seq; Type: SEQUENCE SET; Schema: public; Owner: stpatriarch
+-- Name: last_position_card_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public.last_position_card_id_seq', 55, true);
 
 
 --
--- Name: players_player_id_seq; Type: SEQUENCE SET; Schema: public; Owner: stpatriarch
+-- Name: players_player_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public.players_player_id_seq', 53, true);
 
 
 --
--- Name: d d_pkey; Type: CONSTRAINT; Schema: public; Owner: stpatriarch
+-- Name: d d_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.d
@@ -533,7 +835,7 @@ ALTER TABLE ONLY public.d
 
 
 --
--- Name: e e_pkey; Type: CONSTRAINT; Schema: public; Owner: stpatriarch
+-- Name: e e_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.e
@@ -541,7 +843,7 @@ ALTER TABLE ONLY public.e
 
 
 --
--- Name: l l_pkey; Type: CONSTRAINT; Schema: public; Owner: stpatriarch
+-- Name: l l_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.l
@@ -549,7 +851,7 @@ ALTER TABLE ONLY public.l
 
 
 --
--- Name: last_position last_position_pkey; Type: CONSTRAINT; Schema: public; Owner: stpatriarch
+-- Name: last_position last_position_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.last_position
@@ -557,7 +859,7 @@ ALTER TABLE ONLY public.last_position
 
 
 --
--- Name: players players_pkey; Type: CONSTRAINT; Schema: public; Owner: stpatriarch
+-- Name: players players_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.players

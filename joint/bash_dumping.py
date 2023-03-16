@@ -2,7 +2,7 @@ import subprocess
 import os
 
 folder = os.path.dirname(os.path.abspath(__file__))
-dump = os.path.join(folder, 'postgres_2_dump.sql')
+dump = os.path.join(folder, 'poker_chance_base.sql')
 
 
 class DumpRestore:

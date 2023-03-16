@@ -1,12 +1,13 @@
 from language.language_interface import LocalInterface
 from joint.toolbox import Tools
-valid_positions = ['D', 'E', 'L']
-valid_players = [f'{i}' for i in range(1, 10)]
+VALID_POSITIONS = ['D', 'E', 'L']
+VALID_PLAYERS_COUNT = [f'{i}' for i in range(1, 10)]
+VERSION_NUMBER = '0.1.1'
 
 
 class ArmenianLanguage(LocalInterface):
-	greeting = '''
-Ողջույն, սա պարզ պոկերային նախնական ձեռքի հնարավորության հաշվիչ է | վերսիա 0.1.0. 
+	greeting = f'''
+Ողջույն, սա պարզ պոկերային նախնական ձեռքի հնարավորության հաշվիչ է | վերսիա {VERSION_NUMBER}. 
 Դուք ընդհամենը պետք է մուտքագրեք ձեր խաղային դիրքը, խաղացողների քանակը  և նախնական խաղաքարտերը։ Այն կհաշվի
 ձեր քարտերի հաղթելու հավանականությունը տոկոսներով։
 Ծրագիրը հաշվի չի առնում խաղաքարտերի մաստային պատկանելությունը։ \U00002660  \U00002665  \U00002666  \U00002663
@@ -15,13 +16,13 @@ class ArmenianLanguage(LocalInterface):
 	@staticmethod
 	def positions_data():
 		return {
-			'Position': Tools().user_inputs('Մուտքագրեք ձեր դիրքը: ', valid_positions),
-			'Players': Tools().user_inputs('Մուտքագրեք մրցակիցների քանակը: ', valid_players),
+			'Position': Tools.user_inputs('Մուտքագրեք ձեր դիրքը: ', VALID_POSITIONS),
+			'Players': Tools.user_inputs('Մուտքագրեք խաղացողների քանակը: ', VALID_PLAYERS_COUNT),
 		}
 
 	@staticmethod
 	def card_data():
-		return Tools().user_inputs('Մուտքագրեք ձեր խաղաքարտերը: ')
+		return Tools.user_inputs('Մուտքագրեք ձեր խաղաքարտերը: ', length=True)
 
 	@staticmethod
 	def other_data(data, percent=None):
@@ -33,8 +34,8 @@ class ArmenianLanguage(LocalInterface):
 
 
 class RussianLanguage(LocalInterface):
-	greeting = '''
-Приветствую, это простой калькулятор для начальних рук в покере | версия 0.1.0. 
+	greeting = f'''
+Приветствую, это простой калькулятор для начальних рук в покере | версия {VERSION_NUMBER}. 
 Вы просто должны ввести вашу позоцию, число играков и начальные руки. Оно посчитает вероятность 
 выигрыша ваших карт в процентах. 
 Программа не принимает во внимание масти карт. \U00002660  \U00002665  \U00002666  \U00002663
@@ -43,13 +44,13 @@ class RussianLanguage(LocalInterface):
 	@staticmethod
 	def positions_data():
 		return {
-			'Position': Tools().user_inputs('Введите вашу позицию: ', valid_positions),
-			'Players': Tools().user_inputs('Введите число оппонентов: ', valid_players),
+			'Position': Tools.user_inputs('Введите вашу позицию: ', VALID_POSITIONS),
+			'Players': Tools.user_inputs('Введите число игрокив: ', VALID_PLAYERS_COUNT),
 		}
 
 	@staticmethod
 	def card_data():
-		return Tools().user_inputs('Введите ваши карты: ')
+		return Tools.user_inputs('Введите ваши карты: ', length=True)
 
 	@staticmethod
 	def other_data(data, percent=None):
@@ -61,8 +62,8 @@ class RussianLanguage(LocalInterface):
 
 
 class EnglishLanguage(LocalInterface):
-	greeting = '''
-Hello, this is simple poker Starting hands chance calculator | version 0.1.0. 
+	greeting = f'''
+Hello, this is simple poker Starting hands chance calculator | version {VERSION_NUMBER}. 
 You should just enter your position, your starting hands number of players and your starting hands. 
 It calculates the probability winning your cards in percentage.
 Program it's take into consideration card suits. \U00002660  \U00002665  \U00002666  \U00002663
@@ -71,13 +72,13 @@ Program it's take into consideration card suits. \U00002660  \U00002665  \U00002
 	@staticmethod
 	def positions_data():
 		return {
-			'Position': Tools().user_inputs('Enter your Position: ', valid_positions),
-			'Players': Tools().user_inputs('Enter number of Players: ', valid_players),
+			'Position': Tools.user_inputs('Enter your Position: ', VALID_POSITIONS),
+			'Players': Tools.user_inputs('Enter number of Players: ', VALID_PLAYERS_COUNT),
 		}
 
 	@staticmethod
 	def card_data():
-		return Tools().user_inputs('Enter your cards: ')
+		return Tools.user_inputs('Enter your cards: ', length=True)
 
 	@staticmethod
 	def other_data(data, percent=None):

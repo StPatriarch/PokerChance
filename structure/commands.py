@@ -11,7 +11,7 @@ class Command(ABC):
 		pass
 
 
-class PercentsSelectCommand(Command):
+class PercentSelectCommand(Command):
 	def execute(self, data):
 		return DB.data_select('players', data['Cards'], f'p_{data["Players"]}')
 
