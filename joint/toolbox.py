@@ -79,10 +79,10 @@ class Cycles:
 		cycle_ = cycle(deq)
 		return cycle_
 
-	@staticmethod
-	def position_(data):
-		for i in data:
-			return next(data)
+	def position_(self, data: list):
+		cycle_data = self.queue_cycle(data)
+		for i in cycle_data:
+			return next(cycle_data)
 
 
 class PercentChance(Corrections):

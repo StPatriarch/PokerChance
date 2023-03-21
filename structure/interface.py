@@ -20,7 +20,6 @@ class Interface:
 	def data_deserialize(self):
 		tool = Tools(Tools.deserialize())
 		p_list = tool.correct_position_by_players()
-		p_cycle = tool.queue_cycle(p_list)
 		while True:
 			data = {
 				'Position': tool.data['Position'],
@@ -28,9 +27,10 @@ class Interface:
 				'Cards': self.language.card_data()
 				}
 			Tools({
-				'Position': Tools.position_(p_cycle),
+				'Position': tool.position_(p_list),
 				'Players': tool.data['Players'],
 			}).serialize()
+			print(data)
 			extras = self.processing_additional_data(data=data)
 			return self.language(data).positions_choose(extras)
 
